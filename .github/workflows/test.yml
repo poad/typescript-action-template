@@ -16,15 +16,17 @@ jobs:
         with:
           node-version: 16.x
           check-latest: true
-          cache: yarn
-      - name: Setup yarn
-        run: |
-          corepack enable
-          corepack prepare yarn@1.22.19 --activate
-      - run: |
-          yarn install
-      - run: |
-          yarn all
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: latest
+          run_install: |
+            - recursive: false
+              args: [--no-frozen-lockfile]
+      - run: pnpm all
+
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
