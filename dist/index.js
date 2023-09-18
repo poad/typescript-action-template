@@ -34,12 +34,12 @@ const core = __importStar(__nccwpck_require__(434));
 const wait_1 = __nccwpck_require__(684);
 async function run() {
     try {
-        const ms = core.getInput('milliseconds');
+        const ms = core.getInput("milliseconds");
         core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
         core.debug(new Date().toTimeString());
         await (0, wait_1.wait)(parseInt(ms, 10));
         core.debug(new Date().toTimeString());
-        core.setOutput('time', new Date().toTimeString());
+        core.setOutput("time", new Date().toTimeString());
     }
     catch (error) {
         if (error instanceof Error)
@@ -61,9 +61,9 @@ exports.wait = void 0;
 async function wait(milliseconds) {
     return new Promise((resolve) => {
         if (isNaN(milliseconds)) {
-            throw new Error('milliseconds not a number');
+            throw new Error("milliseconds not a number");
         }
-        setTimeout(() => resolve('done!'), milliseconds);
+        setTimeout(() => resolve("done!"), milliseconds);
     });
 }
 exports.wait = wait;
