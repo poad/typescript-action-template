@@ -11,12 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 16.x
-          check-latest: true
-          cache: pnpm
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -25,6 +19,14 @@ jobs:
           run_install: |
             - recursive: false
               args: [--no-frozen-lockfile]
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 20.x
+          check-latest: true
+          cache: pnpm
+          
       - run: pnpm all
 
   test: # make sure the action works on a clean machine without building
