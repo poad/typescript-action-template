@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "TypeScript template action",
-  "main": "lib/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
     "format-check": "biome format src",
@@ -12,9 +12,13 @@
     "check-fix": "biome check --apply-unsafe src",
     "lint": "pnpm format-check && pnpm check",
     "lint-fix": "pnpm format && pnpm check-fix",
-    "package": "ncc build --source-map --license licenses.txt",
-    "test": "jest",
-    "all": "pnpm build && pnpm format && pnpm lint && pnpm package && npm test"
+    "test": "NODE_ENV=test jest --coverage --passWithNoTests",
+    "package": "ncc build --source-map --license licenses.txt -m -q",
+    "clean": "rm -rf dist",
+    "prepackage": "pnpm build",
+    "prebuild": "pnpm clean && pnpm lint-fix",
+    "preclean": "pnpm install",
+    "all": "pnpm build && pnpm lint && pnpm package && pnpm test"
   },
   "repository": {
     "type": "git",
@@ -29,14 +33,13 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.10.1",
-    "got": "^13.0.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.3.0",
+    "@biomejs/biome": "^1.3.1",
     "@jest/globals": "^29.7.0",
     "@swc/cli": "^0.1.62",
-    "@swc/core": "^1.3.93",
+    "@swc/core": "^1.3.94",
     "@swc/helpers": "^0.5.3",
     "@swc/jest": "^0.2.29",
     "@types/node": "^20.8.7",
@@ -44,7 +47,17 @@
     "jest": "^29.7.0",
     "js-yaml": "^4.1.0",
     "regenerator-runtime": "^0.14.0",
-    "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
+  },
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.test.ts"
+    ],
+    "transform": {
+      "^.+\\.(t|j)sx?$": "@swc/jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(?:.pnpm/)?.+)"
+    ]
   }
 }
