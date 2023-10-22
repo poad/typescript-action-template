@@ -4,12 +4,27 @@ updates:
     directory: /
     schedule:
       interval: daily
+    allow:
+      - dependency-type: all
+    rebase-strategy: auto
+    assignees:
+      - poad
+    groups:
+      actions:
+        patterns:
+          - "*"
 
   - package-ecosystem: npm
-    directory: /
+    directory: '/'
     schedule:
       interval: daily
+      timezone: Asia/Tokyo
+    allow:
+      - dependency-type: all
+    rebase-strategy: auto
+    assignees:
+      - poad
     groups:
       npm:
         patterns:
-          - '*'
+          - "*"
