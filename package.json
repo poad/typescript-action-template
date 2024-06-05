@@ -36,10 +36,10 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
+    "@biomejs/biome": "^1.8.0",
     "@jest/globals": "^29.7.0",
     "@swc/cli": "^0.1.65",
-    "@swc/core": "^1.5.24",
+    "@swc/core": "^1.5.25",
     "@swc/helpers": "^0.5.11",
     "@swc/jest": "^0.2.36",
     "@types/node": "^20.14.1",
