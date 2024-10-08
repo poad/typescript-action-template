@@ -4,16 +4,13 @@
   "private": true,
   "description": "TypeScript template action",
   "main": "dist/main.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
-    "format-check": "biome format src",
-    "format:fix": "biome format --write src",
-    "style:check": "biome check src",
-    "style:fix": "biome check --apply-unsafe src",
-    "lint": "pnpm run --parallel /.*:check/",
-    "lint-fix": "pnpm run /.*:fix/",
-    "test": "NODE_ENV=test jest --coverage --passWithNoTests",
-    "package": "ncc build --source-map --license licenses.txt -m -q",
+    "lint-fix": "eslint src/**/*.ts --fix",
+    "lint": "eslint src/**/*.ts",
+    "test": "vitest run --silent=false --coverage",
+    "package": "ncc build --source-map --license licenses.txt -m -q --target es2023",
     "clean": "rm -rf dist",
     "prepackage": "pnpm build",
     "prebuild": "pnpm clean && pnpm lint-fix",
@@ -36,29 +33,21 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
-    "@jest/globals": "^29.7.0",
-    "@swc/cli": "^0.1.65",
-    "@swc/core": "^1.7.28",
-    "@swc/helpers": "^0.5.13",
-    "@swc/jest": "^0.2.36",
-    "@types/node": "^20.16.11",
+    "@stylistic/eslint-plugin": "^2.9.0",
+    "@stylistic/eslint-plugin-js": "^2.9.0",
+    "@stylistic/eslint-plugin-plus": "^2.9.0",
+    "@stylistic/eslint-plugin-ts": "^2.9.0",
+    "@types/node": "^22.7.5",
     "@vercel/ncc": "^0.38.2",
-    "jest": "^29.7.0",
+    "@vitest/coverage-v8": "^2.1.2",
+    "eslint": "^9.12.0",
+    "eslint-plugin-github": "^5.0.2",
     "js-yaml": "^4.1.0",
-    "regenerator-runtime": "^0.14.1",
-    "typescript": "^5.6.2"
-  },
-  "jest": {
-    "testMatch": [
-      "**/tests/**/*.test.ts"
-    ],
-    "transform": {
-      "^.+\\.(t|j)sx?$": "@swc/jest"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!(?:.pnpm/)?.+)"
-    ]
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.1",
+    "vite": "^5.4.8",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.1.2"
   },
   "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
 }
