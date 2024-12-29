@@ -12,9 +12,6 @@
     "test": "vitest run --silent=false --coverage",
     "package": "ncc build --source-map --license licenses.txt -m -q --target es2023",
     "clean": "rm -rf dist",
-    "prepackage": "pnpm build",
-    "prebuild": "pnpm clean && pnpm lint-fix",
-    "preclean": "pnpm install",
     "all": "pnpm build && pnpm lint && pnpm package && pnpm test"
   },
   "repository": {
