@@ -13,13 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set Node.js 22.x
+      - uses: actions/checkout@v5
+
+      - name: Use Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: 22.x
-          package-manager-cache: false
-
-      - uses: actions/checkout@v5
+          node-version: 'lts/*'
+          check-latest: true
+          package-manager-cache: pnpm
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
