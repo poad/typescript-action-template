@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: 'lts/*'
           check-latest: true
-          package-manager-cache: pnpm
+          package-manager-cache: false
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
           run_install: |
