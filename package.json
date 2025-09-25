@@ -10,7 +10,7 @@
     "lint-fix": "eslint src/**/*.ts --fix",
     "lint": "eslint src/**/*.ts",
     "test": "vitest run --silent=false --coverage",
-    "package": "ncc build --source-map --license licenses.txt -m -q --target es2023",
+    "package": "ncc build --source-map --license licenses.txt -q --target es2023",
     "clean": "rimraf dist",
     "all": "pnpm clean && pnpm build && pnpm lint && pnpm package && pnpm test"
   },
