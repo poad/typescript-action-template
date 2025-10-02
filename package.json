@@ -41,7 +41,7 @@
     "eslint-plugin-github": "^6.0.0",
     "jiti": "^2.6.0",
     "js-yaml": "^4.1.0",
-    "pnpm": "^10.17.1",
+    "pnpm": "^10.18.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.45.0",
