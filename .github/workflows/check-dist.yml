@@ -23,7 +23,7 @@ jobs:
           package-manager-cache: false
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         id: pnpm-install
         with:
           run_install: |
@@ -45,7 +45,7 @@ jobs:
         id: diff
 
       # If index.js was different than expected, upload the expected version as an artifact
-      - uses: actions/upload-artifact@v7.0.0
+      - uses: actions/upload-artifact@v7.0.1
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
           name: dist
