@@ -1,6 +1,10 @@
 packages:
   - .
 
+allowBuilds:
+  esbuild: false
+  unrs-resolver: false
+
 enablePrePostScripts: false
 
 minimumReleaseAge: 1440
