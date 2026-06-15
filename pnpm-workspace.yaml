@@ -9,8 +9,7 @@ enablePrePostScripts: false
 
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
-  - fast-xml-parser@5.7.1
-  - fast-xml-builder@1.1.5
+  - pnpm@11.7.0
   - uuid@14.0.0
 
 overrides:
