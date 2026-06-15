@@ -204,7 +204,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  fast-xml-parser@<5.7.0: '>=5.7.0'
   '@types/node': ^24
 
 importers:
