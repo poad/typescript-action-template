@@ -2,11 +2,16 @@ packages:
   - .
 
 allowBuilds:
-  esbuild: false
   unrs-resolver: false
 
-enablePrePostScripts: false
+blockExoticSubdeps: true
 
-minimumReleaseAge: 1440
+minimumReleaseAge: 10080 # 7 days in minutes
+
+overrides:
+  eslint-import-resolver-typescript: '^4.4.5'
+  semver: '>=7'
 
 strictPeerDependencies: false
+
+trustPolicy: no-downgrade
