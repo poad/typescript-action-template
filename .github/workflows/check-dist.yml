@@ -17,13 +17,10 @@ jobs:
       with:
         persist-credentials: false
 
-    - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
-
-    - name: Install dependencies
-      run: bun install
+    - uses: pnpm/setup@5d160c5bc68a09337ad0d5654e237e03253b5879 # v1.0.0
 
     - name: Rebuild the dist/ directory
-      run: rm -rf dist && bun run --bun build && bun run --bun package
+      run: rm -rf dist && pnpm build && pnpm package
 
     - name: Compare the expected and actual dist/ directories
       run: |

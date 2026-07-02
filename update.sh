@@ -21,7 +21,7 @@ fi
 echo ""
 pwd
 
-if ! (pnx -y pnpm@latest self-update && pnpm install && pnpm up && pnpm audit --fix override && pnpm up && pnpm lint-fix && pnpm clean && rm -rf dist && pnpm clean --lockfile && bun install && bun run --bun build &&  bun run --bun package && rm -rf node_modules && pnpm install && git add .); then
+if ! (pnx -y pnpm@latest self-update && pnpm install && pnpm up && pnpm audit --fix override && pnpm up && pnpm lint-fix && pnpm clean && rm -rf dist && pnpm build && pnpm package && git add .); then
   cd "${CUR}" || exit
   exit $result
 fi
