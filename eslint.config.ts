@@ -5,12 +5,7 @@ import eslint from '@eslint/js';
 import { configs, parser } from 'typescript-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 import { importX, createNodeResolver } from 'eslint-plugin-import-x';
-import {
-  createTypeScriptImportResolver,
-} from 'eslint-import-resolver-typescript';
-
-// // @ts-expect-error ignore type errors
-// import github from 'eslint-plugin-github';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 // @ts-expect-error ignore type errors
 import pluginPromise from 'eslint-plugin-promise';
 
@@ -23,40 +18,34 @@ export default defineConfig(
   {
     ignores: [
       '**/*.d.ts',
-      '*.{js,jsx}',
+      'src/tsconfig.json',
+      'src/stories',
+      '**/*.css',
       'node_modules/**/*',
+      'out',
+      'cdk.out',
       'dist',
     ],
   },
-  eslint.configs.recommended,
-  ...configs.strict,
-  ...configs.stylistic,
   pluginPromise.configs['flat/recommended'],
-  // github.getFlatConfigs().typescript,
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
   {
-    files: ['**/*.ts'],
+    files: ['**/*.ts', '*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       parser,
       parserOptions: {
         projectService: {
-          allowDefaultProject: [
-            'eslint.config.ts',
-            'vitest.config.ts',
-            '__tests__/*.test.ts',
-          ],
+          allowDefaultProject: ['eslint.config.ts', 'vitest.config.ts', '__tests__/*.ts'],
         },
         tsconfigRootDir: __dirname,
       },
     },
     plugins: {
-      'import-x': importX,
       '@stylistic': stylistic,
     },
-    extends: [
-      'import-x/flat/recommended',
-    ],
     settings: {
       'import-x/resolver-next': [
         createTypeScriptImportResolver({
@@ -65,11 +54,16 @@ export default defineConfig(
         createNodeResolver(),
       ],
     },
+    extends: [
+      eslint.configs.recommended,
+      configs.strict,
+      configs.stylistic,
+    ],
     rules: {
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/indent': ['error', 2],
-      '@stylistic/max-len': ['error', 80],
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/quotes': ['error', 'single'],
 
       'import-x/order': [
