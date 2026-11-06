@@ -17,7 +17,7 @@ updates:
           - "*"
 
   - package-ecosystem: npm
-    directory: '/'
+    directory: "/"
     schedule:
       interval: daily
       timezone: Asia/Tokyo

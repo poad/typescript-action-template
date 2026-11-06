@@ -6,9 +6,9 @@
 
 Use this template to bootstrap the creation of a TypeScript action.:rocket:
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
+This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+If you are new, there's also a simpler introduction. See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
 
 ## Create an action from this template
 
@@ -18,7 +18,7 @@ Click the `Use this Template` and provide the new repo details for your action
 
 > First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
 
-Install the dependencies  
+Install the dependencies
 
 ```bash
 npm install
@@ -30,7 +30,7 @@ Build the typescript and package it for distribution
 npm run build && npm run package
 ```
 
-Run the tests :heavy_check_mark:  
+Run the tests :heavy_check_mark:
 
 ```bash
 $ npm test
@@ -60,9 +60,9 @@ import * as core from '@actions/core';
 ...
 
 async function run() {
-  try { 
+  try {
       ...
-  } 
+  }
   catch (error) {
     core.setFailed(error.message);
   }
