@@ -4,6 +4,7 @@
   "tabWidth": 2,
   "endOfLine": "lf",
   "insertFinalNewline": true,
+  "ignorePatterns": ["dist"],
   "sortImports": {
     "partitionByNewline": true,
     "newlinesBetween": false

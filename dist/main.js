@@ -1,19 +1,17 @@
 import * as core from "@actions/core";
 import { wait } from "./wait.js";
 async function run() {
-    try {
-        const ms = core.getInput("milliseconds");
-        // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-        core.debug(`Waiting ${ms} milliseconds ...`);
-        core.debug(new Date().toTimeString());
-        await wait(Number.parseInt(ms, 10));
-        core.debug(new Date().toTimeString());
-        core.setOutput("time", new Date().toTimeString());
-    }
-    catch (error) {
-        if (error instanceof Error)
-            core.setFailed(error.message);
-    }
+  try {
+    const ms = core.getInput("milliseconds");
+    // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    core.debug(`Waiting ${ms} milliseconds ...`);
+    core.debug(new Date().toTimeString());
+    await wait(Number.parseInt(ms, 10));
+    core.debug(new Date().toTimeString());
+    core.setOutput("time", new Date().toTimeString());
+  } catch (error) {
+    if (error instanceof Error) core.setFailed(error.message);
+  }
 }
 run();
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9tYWluLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sS0FBSyxJQUFJLE1BQU0sZUFBZSxDQUFDO0FBQ3RDLE9BQU8sRUFBRSxJQUFJLEVBQUUsTUFBTSxXQUFXLENBQUM7QUFFakMsS0FBSyxVQUFVLEdBQUc7SUFDaEIsSUFBSSxDQUFDO1FBQ0gsTUFBTSxFQUFFLEdBQVcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsQ0FBQztRQUVqRCwwRUFBMEU7UUFDMUUsSUFBSSxDQUFDLEtBQUssQ0FBQyxXQUFXLEVBQUUsbUJBQW1CLENBQUMsQ0FBQztRQUU3QyxJQUFJLENBQUMsS0FBSyxDQUFDLElBQUksSUFBSSxFQUFFLENBQUMsWUFBWSxFQUFFLENBQUMsQ0FBQztRQUN0QyxNQUFNLElBQUksQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLEVBQUUsRUFBRSxFQUFFLENBQUMsQ0FBQyxDQUFDO1FBQ3BDLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxJQUFJLEVBQUUsQ0FBQyxZQUFZLEVBQUUsQ0FBQyxDQUFDO1FBRXRDLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBTSxFQUFFLElBQUksSUFBSSxFQUFFLENBQUMsWUFBWSxFQUFFLENBQUMsQ0FBQztJQUNwRCxDQUFDO0lBQUMsT0FBTyxLQUFLLEVBQUUsQ0FBQztRQUNmLElBQUksS0FBSyxZQUFZLEtBQUs7WUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUMsQ0FBQztJQUM1RCxDQUFDO0FBQ0gsQ0FBQztBQUVELEdBQUcsRUFBRSxDQUFDIn0=
