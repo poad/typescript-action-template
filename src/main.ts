@@ -1,9 +1,9 @@
-import { wait } from './wait.js';
-import * as core from '@actions/core';
+import * as core from "@actions/core";
+import { wait } from "./wait.js";
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds');
+    const ms: string = core.getInput("milliseconds");
 
     // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
     core.debug(`Waiting ${ms} milliseconds ...`);
@@ -12,7 +12,7 @@ async function run(): Promise<void> {
     await wait(Number.parseInt(ms, 10));
     core.debug(new Date().toTimeString());
 
-    core.setOutput('time', new Date().toTimeString());
+    core.setOutput("time", new Date().toTimeString());
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message);
   }
